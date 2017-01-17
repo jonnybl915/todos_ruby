@@ -1,6 +1,6 @@
 require_relative 'todotron'
-
-m = TodoTron.new
+require_relative 'todo'
+tron = TodoTron.new
 
 puts 'Welcome to TodoTron'
 loop do
@@ -13,11 +13,15 @@ loop do
   input = gets.chomp
 
   if input == '1'
-    m.list_todos
+   puts tron.items
   elsif input == '2'
-    # m.add_todo ...
+    print 'New Item: '
+    description = gets.chomp
+    tron.add_item description
   elsif input == '3'
-    # m.complete_todo
+    print 'Mark as Complete:'
+    description = gets.chomp
+    tron.mark_complete description
   else
     puts "Unrecognized input: #{input}. Try again"
   end

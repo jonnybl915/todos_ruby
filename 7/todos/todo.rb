@@ -12,4 +12,11 @@ class Todo
   def done?
     @completed_at != nil
   end
+  def to_s
+    if done?
+      check = 'x'
+    else check = ' '
+    end
+    "[#{check} ] #{@description}"
+  end
 end

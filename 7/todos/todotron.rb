@@ -9,9 +9,14 @@ class TodoTron
   end
   def mark_complete(description)
     # @items.find(description)
+    item = find_item description
+        item.done!
+
+  end
+  def find_item(description)
     @items.each do |item|
       if item.description == description
-        item.done!
+        return item
       end
     end
   end

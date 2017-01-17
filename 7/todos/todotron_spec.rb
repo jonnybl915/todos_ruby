@@ -28,6 +28,15 @@ describe TodoTron do
     item = tron.items.first
 
     expect(item.done?).to eq true
+  end
+
+  it 'can find an item based on description' do
+    tron = TodoTron.new
+    tron.add_item('fix the bugs')
+
+    i = tron.find_item 'fix the bugs'
+
+    expect(i)
 
   end
 
