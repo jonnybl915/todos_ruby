@@ -17,6 +17,6 @@ class Todo
       check = 'x'
     else check = ' '
     end
-    "[#{check} ] #{@description}"
+    "[#{check}] #{@description}"
   end
 end

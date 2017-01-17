@@ -39,5 +39,11 @@ describe TodoTron do
     expect(i)
 
   end
+  it 'can fail to find items' do
+    tron = TodoTron.new
+
+    result = tron.find_item 'Not a TODO'
+    expect(result).to eq nil
+  end
 
 end
