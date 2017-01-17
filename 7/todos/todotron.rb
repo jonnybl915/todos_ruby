@@ -1,3 +1,6 @@
+require 'csv'
+require_relative 'todo'
+
 class TodoTron
   attr_reader :items
   def initialize
@@ -24,5 +27,25 @@ class TodoTron
     puts 'WARNING: invalid item description'
     return nil
   end
+  def export_csv(path)
+    CSV.open(path, 'w') do |csv|
+      csv << ['Item Name', 'Done?']
+    @items.each do |item|
+      csv << [item.description, item.done?]
+    end
+    end
+    puts "Path is #{path}"
+  end
+  def self.load_csv(path)
+    tron = TodoTron.new
 
+    #load in items
+    CSV.foreach(path, headers: true) do |row|
+      tron.add_item row['Item Name']
+      if row['Done'] == 'true'
+        tron.mark_complete row['Item Name']
+      end
+    end
+    tron
+  end
 end
