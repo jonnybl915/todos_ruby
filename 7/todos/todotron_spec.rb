@@ -17,4 +17,18 @@ describe TodoTron do
     # It has one Item
     expect(tron.items.count).to eq 1
   end
+
+  it 'can mark the items as complete' do
+    tron = TodoTron.new
+    tron.add_item('Learn ruby')
+
+    # Record that task as done
+    tron.mark_complete('Learn ruby')
+    # Can see that it is done
+    item = tron.items.first
+
+    expect(item.done?).to eq true
+
+  end
+
 end
